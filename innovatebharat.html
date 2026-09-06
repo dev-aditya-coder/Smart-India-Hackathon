@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InnovateBharat — Bridging Citizens, Universities & Industry</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --navy-950: #0a1226;
+      --navy-900: #0d1830;
+      --navy-800: #12203e;
+      --navy-700: #182a4d;
+      --orange-500: #f7791f;
+      --orange-600: #ef6c1a;
+      --yellow-400: #fbbf24;
+      --bg-grey: #f6f7f9;
+      --card-border: #e7e9ee;
+      --text-navy: #0f1c38;
+      --text-grey: #5b6472;
+      --text-grey-light: #8891a0;
+      --green: #22c55e;
+      --red: #ef4444;
+      --purple: #8b5cf6;
+      --shadow-sm: 0 1px 2px rgba(15, 28, 56, .04);
+      --shadow-md: 0 6px 20px rgba(15, 28, 56, .07);
+      --radius-lg: 18px;
+      --radius-md: 14px;
+      --radius-sm: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: var(--text-navy);
+      background: var(--bg-grey);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3,
+    .brand,
+    .btn,
+    nav a {
+      font-family: 'Baloo 2', sans-serif;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    /* ---------- Layout helpers ---------- */
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+      animation: fadein .35s ease;
+    }
+
+    @keyframes fadein {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ---------- Navbar ---------- */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #fff;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .navbar .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 1.18rem;
+      letter-spacing: .2px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-navy);
+      white-space: nowrap;
+    }
+
+    .brand .in-badge {
+      color: var(--orange-500);
+      font-size: .72rem;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: .5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      font-size: .95rem;
+      color: var(--text-grey);
+      padding: 9px 18px;
+      border-radius: 22px;
+      transition: background .18s ease, color .18s ease;
+    }
+
+    .nav-links a:hover {
+      background: #f1f2f5;
+      color: var(--text-navy);
+    }
+
+    .nav-links a.active {
+      background: var(--navy-950);
+      color: #fff;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      padding: 6px;
+    }
+
+    .nav-toggle svg {
+      width: 26px;
+      height: 26px;
+      stroke: var(--text-navy);
+    }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 15px 26px;
+      border-radius: 12px;
+      border: 2px solid transparent;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+      white-space: nowrap;
+    }
+
+    .btn:active {
+      transform: scale(.98);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--orange-500), var(--orange-600));
+      color: #fff;
+      box-shadow: 0 8px 22px rgba(247, 121, 31, .35);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 10px 26px rgba(247, 121, 31, .48);
+    }
+
+    .btn-outline-dark {
+      background: transparent;
+      border-color: rgba(255, 255, 255, .35);
+      color: #fff;
+    }
+
+    .btn-outline-dark:hover {
+      background: rgba(255, 255, 255, .08);
+    }
+
+    .btn-navy {
+      background: var(--navy-950);
+      color: #fff;
+      width: 100%;
+      justify-content: center;
+      font-size: 1.02rem;
+    }
+
+    .btn-navy:hover {
+      background: #050b1a;
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      background:
+        radial-gradient(ellipse 700px 420px at 18% -10%, rgba(247, 121, 31, .16), transparent 60%),
+        radial-gradient(ellipse 600px 500px at 90% 10%, rgba(56, 80, 140, .35), transparent 55%),
+        var(--navy-950);
+      padding: 76px 0 64px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      border: 1px solid rgba(255, 255, 255, .18);
+      background: rgba(255, 255, 255, .04);
+      color: var(--orange-500);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .82rem;
+      font-weight: 500;
+      padding: 8px 18px;
+      border-radius: 999px;
+      margin-bottom: 30px;
+    }
+
+    .badge-pill .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--orange-500);
+    }
+
+    .hero h1 {
+      color: #fff;
+      font-size: 3.4rem;
+      line-height: 1.08;
+      font-weight: 700;
+      margin: 0 0 26px;
+      max-width: 900px;
+      letter-spacing: .2px;
+    }
+
+    .hero h1 .grad {
+      background: linear-gradient(90deg, var(--orange-500), var(--yellow-400));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p.lead {
+      color: #c3cbdb;
+      font-size: 1.12rem;
+      line-height: 1.7;
+      max-width: 640px;
+      margin: 0 0 38px;
+      font-weight: 400;
+    }
+
+    .hero p.lead b {
+      color: #fff;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ---------- Stats bar ---------- */
+    .stats-bar {
+      background: var(--navy-950);
+      padding: 0 0 56px;
+      margin-top: -8px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .stat-card {
+      background: var(--navy-800);
+      border: 1px solid rgba(255, 255, 255, .06);
+      border-radius: var(--radius-md);
+      padding: 26px 24px;
+    }
+
+    .stat-card .num {
+      color: #fff;
+      font-size: 2.1rem;
+      font-weight: 700;
+      font-family: 'Baloo 2', sans-serif;
+    }
+
+    .stat-card .label {
+      color: #9aa4b8;
+      font-size: .92rem;
+      margin-top: 4px;
+    }
+
+    .stat-card .sub {
+      color: var(--orange-500);
+      font-size: .8rem;
+      font-family: 'JetBrains Mono', monospace;
+      margin-top: 10px;
+    }
+
+    /* ---------- Section generic ---------- */
+    section.block {
+      padding: 88px 0;
+    }
+
+    .eyebrow {
+      color: var(--orange-500);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+
+    .block h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--text-navy);
+      margin: 0 0 46px;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .center h2 {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ---------- Process steps ---------- */
+    .steps-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      align-items: stretch;
+    }
+
+    .step-card {
+      background: var(--bg-grey);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 30px 22px;
+      text-align: center;
+    }
+
+    .step-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #c7ccd6;
+      font-size: 1.4rem;
+    }
+
+    .step-emoji {
+      font-size: 1.9rem;
+      margin-bottom: 14px;
+    }
+
+    .step-num {
+      color: var(--orange-500);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .78rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .step-card h3 {
+      font-size: 1.08rem;
+      margin: 0 0 10px;
+      color: var(--text-navy);
+    }
+
+    .step-card p {
+      font-size: .9rem;
+      color: var(--text-grey);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .step-card.dark {
+      background: var(--navy-950);
+      border-color: var(--navy-900);
+    }
+
+    .step-card.dark h3 {
+      color: #fff;
+    }
+
+    .step-card.dark p {
+      color: #aab2c4;
+    }
+
+    .steps-row2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 760px;
+      margin: 24px auto 0;
+    }
+
+    /* ---------- Category cards ---------- */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .cat-card {
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 28px 26px;
+      box-shadow: var(--shadow-sm);
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+
+    .cat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: #dfe3ea;
+    }
+
+    .cat-card .emoji {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+    }
+
+    .cat-card .cat-name {
+      font-weight: 600;
+      color: var(--text-navy);
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .cat-card.active .cat-name {
+      color: var(--orange-500);
+    }
+
+    .cat-card .cat-num {
+      font-size: 1.7rem;
+      font-weight: 700;
+      font-family: 'Baloo 2', sans-serif;
+      color: var(--text-navy);
+    }
+
+    .cat-card .cat-sub {
+      font-size: .82rem;
+      color: var(--text-grey-light);
+      margin-top: 2px;
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      background: var(--navy-950);
+      color: #8b93a6;
+      text-align: center;
+      padding: 26px 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .82rem;
+      letter-spacing: .2px;
+    }
+
+    /* ================= SUBMIT PROBLEM ================= */
+    .form-hero {
+      padding: 72px 0 90px;
+      background: var(--bg-grey);
+    }
+
+    .form-head {
+      max-width: 680px;
+      margin: 0 auto 40px;
+    }
+
+    .form-head .eyebrow {
+      margin-bottom: 14px;
+    }
+
+    .form-head h1 {
+      font-size: 2.3rem;
+      font-weight: 700;
+      margin: 0 0 14px;
+      color: var(--text-navy);
+    }
+
+    .form-head p {
+      color: var(--text-grey);
+      font-size: 1.02rem;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .form-card {
+      max-width: 680px;
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .field {
+      margin-bottom: 22px;
+    }
+
+    .field label {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .74rem;
+      font-weight: 600;
+      letter-spacing: .8px;
+      color: var(--text-grey);
+      margin-bottom: 9px;
+    }
+
+    .field label .req {
+      color: var(--orange-500);
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      border: 1.5px solid var(--card-border);
+      border-radius: 10px;
+      padding: 13px 15px;
+      font-family: 'Inter', sans-serif;
+      font-size: .96rem;
+      color: var(--text-navy);
+      background: #fff;
+      transition: border-color .15s ease, box-shadow .15s ease;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: #a9b0bd;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      outline: none;
+      border-color: var(--orange-500);
+      box-shadow: 0 0 0 3px rgba(247, 121, 31, .14);
+    }
+
+    .field textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .form-note {
+      display: none;
+      margin-top: 18px;
+      padding: 14px 16px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #166534;
+      border-radius: 10px;
+      font-size: .9rem;
+      font-weight: 500;
+    }
+
+    .form-note.show {
+      display: block;
+    }
+
+    /* ================= DASHBOARD ================= */
+    .dash-section {
+      padding: 64px 0 90px;
+    }
+
+    .dash-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 34px;
+    }
+
+    .dash-top h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 8px 0 0;
+      color: var(--text-navy);
+    }
+
+    .filter-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-pill {
+      font-size: .86rem;
+      font-weight: 600;
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--card-border);
+      background: #fff;
+      color: var(--text-grey);
+      font-family: 'Inter', sans-serif;
+      transition: background .15s ease, color .15s ease, border-color .15s ease;
+    }
+
+    .filter-pill:hover {
+      border-color: #c9cedb;
+    }
+
+    .filter-pill.active {
+      background: var(--navy-950);
+      color: #fff;
+      border-color: var(--navy-950);
+    }
+
+    .dash-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-bottom: 32px;
+    }
+
+    .dash-stat {
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 22px 22px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .dash-stat .icon {
+      font-size: 1.3rem;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .dash-stat .num {
+      font-size: 1.8rem;
+      font-weight: 700;
+      font-family: 'Baloo 2', sans-serif;
+    }
+
+    .dash-stat .num.red {
+      color: var(--red);
+    }
+
+    .dash-stat .num.purple {
+      color: var(--purple);
+    }
+
+    .dash-stat .num.green {
+      color: var(--green);
+    }
+
+    .dash-stat .label {
+      color: var(--text-grey-light);
+      font-size: .85rem;
+      margin-top: 4px;
+    }
+
+    .problem-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .problem-card {
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 26px 28px;
+      box-shadow: var(--shadow-sm);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 18px;
+      align-items: start;
+      transition: border-color .15s ease, box-shadow .15s ease;
+    }
+
+    .problem-card:hover {
+      border-color: #dbe0e9;
+      box-shadow: var(--shadow-md);
+      cursor: pointer;
+    }
+
+    .problem-icon {
+      font-size: 1.5rem;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    .problem-meta-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .8rem;
+      color: var(--text-grey-light);
+    }
+
+    .status-badge {
+      font-family: 'Inter', sans-serif;
+      font-size: .76rem;
+      font-weight: 700;
+      padding: 4px 11px;
+      border-radius: 6px;
+    }
+
+    .status-Matched {
+      background: #dbeafe;
+      color: #1d4ed8;
+    }
+
+    .status-InProgress {
+      background: #ede9fe;
+      color: #6d28d9;
+    }
+
+    .status-Open {
+      background: #fef3c7;
+      color: #a16207;
+    }
+
+    .severity {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sev-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
+
+    .sev-High .sev-dot {
+      background: var(--orange-500);
+    }
+
+    .sev-Critical .sev-dot {
+      background: var(--red);
+    }
+
+    .sev-Medium .sev-dot {
+      background: var(--yellow-400);
+    }
+
+    .problem-card h3 {
+      font-size: 1.12rem;
+      margin: 0 0 8px;
+      color: var(--text-navy);
+    }
+
+    .problem-card p.desc {
+      color: var(--text-grey);
+      font-size: .92rem;
+      line-height: 1.6;
+      margin: 0 0 14px;
+    }
+
+    .problem-submeta {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: .82rem;
+      color: var(--text-grey-light);
+      margin-bottom: 16px;
+    }
+
+    .problem-submeta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .progress-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: .78rem;
+      color: var(--text-grey-light);
+      margin-bottom: 6px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .progress-bar {
+      height: 6px;
+      border-radius: 4px;
+      background: #eef0f4;
+      overflow: hidden;
+    }
+
+    .progress-bar>div {
+      height: 100%;
+      background: linear-gradient(90deg, var(--orange-500), var(--yellow-400));
+      border-radius: 4px;
+    }
+
+    .chevron {
+      color: #c7ccd6;
+      font-size: 1.3rem;
+      align-self: center;
+    }
+
+    /* ================= PROJECTS ================= */
+    .proj-section {
+      padding: 64px 0 90px;
+    }
+
+    .proj-eyebrow {
+      margin-bottom: 22px;
+    }
+
+    .proj-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 26px;
+      align-items: start;
+    }
+
+    .proj-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .proj-item {
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: background .15s ease, border-color .15s ease;
+    }
+
+    .proj-item:hover {
+      border-color: #c9cedb;
+    }
+
+    .proj-item.active {
+      background: var(--navy-950);
+      border-color: var(--navy-950);
+    }
+
+    .proj-item .emoji {
+      font-size: 1.2rem;
+    }
+
+    .proj-item .p-title {
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--text-navy);
+      line-height: 1.3;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 190px;
+    }
+
+    .proj-item.active .p-title {
+      color: #fff;
+    }
+
+    .proj-item .p-id {
+      font-size: .76rem;
+      color: var(--text-grey-light);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .proj-item.active .p-id {
+      color: var(--orange-500);
+    }
+
+    .proj-main {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .proj-hero-card {
+      background: linear-gradient(135deg, var(--navy-950), var(--navy-800));
+      border-radius: var(--radius-lg);
+      padding: 34px 36px;
+      color: #fff;
+    }
+
+    .proj-hero-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .proj-hero-top .badges {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .8rem;
+      color: var(--orange-500);
+    }
+
+    .proj-hero-card h2 {
+      font-size: 1.7rem;
+      margin: 0 0 12px;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .proj-hero-card p {
+      color: #b7bfd1;
+      font-size: .95rem;
+      line-height: 1.6;
+      margin: 0 0 26px;
+      max-width: 640px;
+    }
+
+    .proj-hero-card .emoji-big {
+      font-size: 2rem;
+    }
+
+    .proj-progress-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: .8rem;
+      color: #9aa4b8;
+      margin-bottom: 8px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .proj-progress-bar {
+      height: 7px;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, .12);
+      overflow: hidden;
+    }
+
+    .proj-progress-bar>div {
+      height: 100%;
+      background: linear-gradient(90deg, var(--orange-500), var(--yellow-400));
+    }
+
+    .proj-cards-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .info-card {
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 24px 26px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .info-card .tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .74rem;
+      letter-spacing: .6px;
+      color: var(--text-grey-light);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .info-card h4 {
+      font-size: 1.08rem;
+      margin: 0 0 16px;
+      color: var(--text-navy);
+    }
+
+    .member-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .76rem;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .member-row .m-name {
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--text-navy);
+    }
+
+    .member-row .m-role {
+      font-size: .78rem;
+      color: var(--text-grey-light);
+    }
+
+    .enrolled-note {
+      font-size: .82rem;
+      color: var(--text-grey-light);
+      margin-top: 8px;
+    }
+
+    .milestones {
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 26px 28px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .milestone-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 0;
+      border-bottom: 1px solid #f0f1f4;
+      gap: 14px;
+    }
+
+    .milestone-row:last-child {
+      border-bottom: none;
+    }
+
+    .milestone-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .m-check {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .75rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .m-check.done {
+      background: var(--green);
+    }
+
+    .m-check.pending {
+      background: #e6e8ed;
+    }
+
+    .milestone-row span.mname {
+      font-size: .94rem;
+      font-weight: 500;
+      color: var(--text-navy);
+    }
+
+    .milestone-row.is-pending span.mname {
+      color: var(--text-grey-light);
+    }
+
+    .milestone-row .mdate {
+      font-size: .82rem;
+      color: var(--text-grey-light);
+      font-family: 'JetBrains Mono', monospace;
+      white-space: nowrap;
+    }
+
+    /* ================= ABOUT ================= */
+    .about-section {
+      padding: 64px 0 90px;
+    }
+
+    .about-hero-card {
+      background: linear-gradient(135deg, var(--navy-950), var(--navy-800));
+      border-radius: var(--radius-lg);
+      padding: 42px 44px;
+      color: #fff;
+      margin-bottom: 56px;
+    }
+
+    .about-hero-card .eyebrow {
+      color: var(--orange-500);
+    }
+
+    .about-hero-card h2 {
+      font-size: 1.9rem;
+      margin: 0 0 16px;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .about-hero-card p {
+      color: #b7bfd1;
+      font-size: 1rem;
+      line-height: 1.7;
+      margin: 0;
+      max-width: 760px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-bottom: 40px;
+    }
+
+    .team-card {
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 20px 22px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: var(--shadow-sm);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+
+    .team-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .team-card .avatar {
+      width: 44px;
+      height: 44px;
+      font-size: .9rem;
+    }
+
+    .team-card .t-name {
+      font-weight: 700;
+      font-size: .98rem;
+      color: var(--text-navy);
+    }
+
+    .team-card .t-role {
+      font-size: .82rem;
+      color: var(--text-grey-light);
+    }
+
+    .stack-card {
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 28px 30px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .stack-card .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .74rem;
+      letter-spacing: .6px;
+      color: var(--text-grey-light);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .stack-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .stack-pill {
+      border: 1.5px solid var(--card-border);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: .86rem;
+      font-weight: 600;
+      color: var(--text-navy);
+      font-family: 'JetBrains Mono', monospace;
+      background: #fbfbfc;
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 980px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .steps-row {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .step-arrow {
+        transform: rotate(90deg);
+        height: 14px;
+      }
+
+      .cat-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .proj-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .proj-sidebar {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 6px;
+      }
+
+      .proj-item {
+        min-width: 220px;
+      }
+
+      .proj-cards-row {
+        grid-template-columns: 1fr;
+      }
+
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .dash-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .wrap {
+        padding: 0 20px;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        border-bottom: 1px solid var(--card-border);
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px 20px 18px;
+        gap: 4px;
+        display: none;
+        box-shadow: var(--shadow-md);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 12px 14px;
+        border-radius: 10px;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .hero {
+        padding: 52px 0 44px;
+      }
+
+      .hero h1 {
+        font-size: 2.15rem;
+      }
+
+      .hero p.lead {
+        font-size: 1rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      .stat-card {
+        padding: 20px 18px;
+      }
+
+      .stat-card .num {
+        font-size: 1.6rem;
+      }
+
+      section.block {
+        padding: 60px 0;
+      }
+
+      .block h2 {
+        font-size: 1.7rem;
+        margin-bottom: 32px;
+      }
+
+      .cat-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-card {
+        padding: 26px 20px;
+      }
+
+      .field-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .dash-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .problem-card {
+        grid-template-columns: auto 1fr;
+      }
+
+      .chevron {
+        display: none;
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-hero-card,
+      .proj-hero-card {
+        padding: 28px 24px;
+      }
+
+      .dash-top h1 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="wrap">
+      <a href="#" class="brand" data-nav="home"><span class="in-badge">IN</span> InnovateBharat</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="#" data-nav="home" class="active">Home</a>
+        <a href="#" data-nav="submit">Submit Problem</a>
+        <a href="#" data-nav="dashboard">Dashboard</a>
+        <a href="#" data-nav="projects">Projects</a>
+        <a href="#" data-nav="about">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= HOME ================= -->
+  <div class="page active" id="page-home">
+
+    <section class="hero">
+      <div class="wrap">
+        <h1>Bridging Citizens,<br><span class="grad">Universities</span> &amp; Industry</h1>
+        <p class="lead">India's grassroots problems—water, health, agriculture, sanitation—go unsolved because citizens,
+          knowledge, and resources live in silos. <b>InnovateBharat</b> closes that gap with AI-powered matching and
+          collaborative project management.</p>
+        <div class="hero-ctas">
+          <a href="#" class="btn btn-primary" data-nav="submit">Report a Problem →</a>
+          <a href="#" class="btn btn-outline-dark" data-nav="dashboard">View Dashboard</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-bar">
+      <div class="wrap">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="num">5,096</div>
+            <div class="label">Problems Submitted</div>
+            <div class="sub">+12% this month</div>
+          </div>
+          <div class="stat-card">
+            <div class="num">318</div>
+            <div class="label">University Partners</div>
+            <div class="sub">Across 28 states</div>
+          </div>
+          <div class="stat-card">
+            <div class="num">94</div>
+            <div class="label">Industry Mentors</div>
+            <div class="sub">47 sectors</div>
+          </div>
+          <div class="stat-card">
+            <div class="num">1,243</div>
+            <div class="label">Projects Resolved</div>
+            <div class="sub">24.4% resolution rate</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block center">
+      <div class="wrap">
+        <div class="eyebrow">THE PROCESS</div>
+        <h2>How InnovateBharat Works</h2>
+        <div class="steps-row">
+          <div class="step-card">
+            <div class="step-emoji">📍</div>
+            <div class="step-num">01</div>
+            <h3>Citizen Reports</h3>
+            <p>Anyone submits a local problem with location, photos, and description via app or web.</p>
+          </div>
+          <div class="step-arrow">→</div>
+          <div class="step-card">
+            <div class="step-emoji">🤖</div>
+            <div class="step-num">02</div>
+            <h3>AI Categorizes</h3>
+            <p>NLP model classifies the problem, extracts urgency, and tags it with domain keywords.</p>
+          </div>
+          <div class="step-arrow">→</div>
+          <div class="step-card">
+            <div class="step-emoji">🎓</div>
+            <div class="step-num">03</div>
+            <h3>University Matched</h3>
+            <p>Relevant departments are suggested. Student teams self-enroll and start research.</p>
+          </div>
+        </div>
+        <div class="steps-row2">
+          <div class="step-card dark">
+            <div class="step-emoji">🏭</div>
+            <div class="step-num">04</div>
+            <h3>Industry Mentor Joins</h3>
+            <p>A matched industry expert provides real-world resources, funding, and mentorship.</p>
+          </div>
+          <div class="step-card dark">
+            <div class="step-emoji">✅</div>
+            <div class="step-num">05</div>
+            <h3>Problem Resolved</h3>
+            <p>Project milestones are tracked. Solution is documented and scaled to similar regions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top:0;">
+      <div class="wrap">
+        <div class="eyebrow">PROBLEM CATEGORIES</div>
+        <h2>Active Problem Domains</h2>
+        <div class="cat-grid">
+          <div class="cat-card active">
+            <div class="emoji">💧</div>
+            <div class="cat-name">Water &amp; Sanitation</div>
+            <div class="cat-num">1,284</div>
+            <div class="cat-sub">active problems</div>
+          </div>
+          <div class="cat-card">
+            <div class="emoji">🏥</div>
+            <div class="cat-name">Healthcare</div>
+            <div class="cat-num">876</div>
+            <div class="cat-sub">active problems</div>
+          </div>
+          <div class="cat-card">
+            <div class="emoji">🌾</div>
+            <div class="cat-name">Agriculture</div>
+            <div class="cat-num">1,102</div>
+            <div class="cat-sub">active problems</div>
+          </div>
+          <div class="cat-card">
+            <div class="emoji">📚</div>
+            <div class="cat-name">Education</div>
+            <div class="cat-num">743</div>
+            <div class="cat-sub">active problems</div>
+          </div>
+          <div class="cat-card">
+            <div class="emoji">🌱</div>
+            <div class="cat-name">Environment</div>
+            <div class="cat-num">659</div>
+            <div class="cat-sub">active problems</div>
+          </div>
+          <div class="cat-card">
+            <div class="emoji">🏗️</div>
+            <div class="cat-name">Infrastructure</div>
+            <div class="cat-num">431</div>
+            <div class="cat-sub">active problems</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ================= SUBMIT PROBLEM ================= -->
+  <div class="page" id="page-submit">
+    <section class="form-hero">
+      <div class="wrap">
+        <div class="form-head">
+          <div class="eyebrow">CITIZEN PORTAL</div>
+          <h1>Report a Local Problem</h1>
+          <p>Describe the issue in your area. Our AI will categorize it and match it with the right university team and
+            industry mentor.</p>
+        </div>
+        <form class="form-card" id="problemForm">
+          <div class="field">
+            <label>Problem Title <span class="req">*</span></label>
+            <input type="text" required placeholder="e.g., Drinking water is contaminated in our village">
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label>Category <span class="req">*</span></label>
+              <select required>
+                <option value="">Select...</option>
+                <option>Water & Sanitation</option>
+                <option>Healthcare</option>
+                <option>Agriculture</option>
+                <option>Education</option>
+                <option>Environment</option>
+                <option>Infrastructure</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>State <span class="req">*</span></label>
+              <select required>
+                <option value="">Select...</option>
+                <option>Uttar Pradesh</option>
+                <option>Maharashtra</option>
+                <option>Chhattisgarh</option>
+                <option>Haryana</option>
+                <option>Rajasthan</option>
+                <option>Bihar</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label>District / Village</label>
+            <input type="text" placeholder="e.g., Rampur, Barabanki">
+          </div>
+          <div class="field">
+            <label>Describe the Problem <span class="req">*</span></label>
+            <textarea required
+              placeholder="Explain the problem clearly — who is affected, since when, what have you tried..."></textarea>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label>Your Name</label>
+              <input type="text" placeholder="Ramesh Kumar">
+            </div>
+            <div class="field">
+              <label>Phone / WhatsApp</label>
+              <input type="tel" placeholder="+91 98765 43210">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-navy">Submit &amp; Get AI Match →</button>
+          <div class="form-note" id="formNote">✓ Thanks! Your problem has been submitted and is being analyzed by our AI
+            for the best university &amp; mentor match.</div>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================= DASHBOARD ================= -->
+  <div class="page" id="page-dashboard">
+    <section class="dash-section">
+      <div class="wrap">
+        <div class="dash-top">
+          <div>
+            <div class="eyebrow">LIVE PLATFORM</div>
+            <h1>Problem Dashboard</h1>
+          </div>
+          <div class="filter-pills" id="filterPills">
+            <button class="filter-pill active" data-filter="All">All</button>
+            <button class="filter-pill" data-filter="Water & Sanitation">Water & Sanitation</button>
+            <button class="filter-pill" data-filter="Healthcare">Healthcare</button>
+            <button class="filter-pill" data-filter="Agriculture">Agriculture</button>
+            <button class="filter-pill" data-filter="Education">Education</button>
+            <button class="filter-pill" data-filter="Environment">Environment</button>
+            <button class="filter-pill" data-filter="Infrastructure">Infrastructure</button>
+          </div>
+        </div>
+
+        <div class="dash-stats">
+          <div class="dash-stat"><span class="icon">📋</span>
+            <div class="num">5,096</div>
+            <div class="label">Total Problems</div>
+          </div>
+          <div class="dash-stat"><span class="icon">🔴</span>
+            <div class="num red">2,341</div>
+            <div class="label">Critical / High</div>
+          </div>
+          <div class="dash-stat"><span class="icon">🔗</span>
+            <div class="num purple">3,182</div>
+            <div class="label">Matched to Teams</div>
+          </div>
+          <div class="dash-stat"><span class="icon">✅</span>
+            <div class="num green">1,243</div>
+            <div class="label">Resolved</div>
+          </div>
+        </div>
+
+        <div class="problem-list" id="problemList"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================= PROJECTS ================= -->
+  <div class="page" id="page-projects">
+    <section class="proj-section">
+      <div class="wrap">
+        <div class="eyebrow proj-eyebrow">SELECT PROJECT</div>
+        <div class="proj-layout">
+          <div class="proj-sidebar" id="projSidebar"></div>
+          <div class="proj-main" id="projMain"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================= ABOUT ================= -->
+  <div class="page" id="page-about">
+    <section class="about-section">
+      <div class="wrap">
+        <div class="about-hero-card">
+          <div class="eyebrow mono">SIH 2026 · PROBLEM SIH26043</div>
+          <h2>InnovateBharat Platform</h2>
+          <p>A Societal Innovation Collaboration Platform that uses AI to connect India's most pressing grassroots
+            problems with academic expertise and industry resources—turning local challenges into structured, trackable
+            innovation projects.</p>
+        </div>
+
+        <div class="eyebrow">OUR 6-MEMBER TEAM</div>
+        <div class="team-grid" id="teamGrid"></div>
+
+        <!-- <div class="stack-card">
+          <div class="tag">TECH STACK</div>
+          <div class="stack-pills">
+            <span class="stack-pill">React.js</span>
+            <span class="stack-pill">Node.js + Express</span>
+            <span class="stack-pill">MongoDB</span>
+            <span class="stack-pill">Python (NLP / AI)</span>
+            <span class="stack-pill">Google Maps API</span>
+            <span class="stack-pill">Firebase Auth</span>
+            <span class="stack-pill">Tailwind CSS</span>
+            <span class="stack-pill">REST APIs</span>
+          </div>
+        </div> -->
+      </div>
+    </section>
+  </div>
+
+  <footer>InnovateBharat · SIH26043 · Smart India Hackathon 2026 · Built with ❤ for Bharat</footer>
+
+  <script>
+    /* ---------------- Navigation ---------------- */
+    const pages = document.querySelectorAll('.page');
+    const navLinkGroups = document.querySelectorAll('[data-nav]');
+    const navLinks = document.getElementById('navLinks');
+    const navToggle = document.getElementById('navToggle');
+
+    function goTo(name) {
+      pages.forEach(p => p.classList.toggle('active', p.id === 'page-' + name));
+      document.querySelectorAll('.nav-links a').forEach(a => a.classList.toggle('active', a.dataset.nav === name));
+      navLinks.classList.remove('open');
+      window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+    }
+    navLinkGroups.forEach(el => {
+      el.addEventListener('click', e => {
+        e.preventDefault();
+        goTo(el.dataset.nav);
+      });
+    });
+    navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+
+    /* ---------------- Data ---------------- */
+    const problems = [
+      {
+        id: 'P-001', icon: '💧', status: 'Matched', sev: 'High', title: 'Drinking Water Contamination in Rampur Village',
+        desc: 'Groundwater has turned yellow-brown. Children are falling sick. Testing shows high fluoride and arsenic levels beyond safe limits.',
+        loc: 'Rampur, Uttar Pradesh', name: 'Ramesh Kumar', upvotes: 342, org: 'IIT Kanpur', progress: 62, cat: 'Water & Sanitation'
+      },
+      {
+        id: 'P-002', icon: '🏥', status: 'InProgress', statusLabel: 'In Progress', sev: 'Critical', title: 'No Primary Health Centre within 30 km',
+        desc: 'Pregnant women must travel 35 km on unpaved roads to reach the nearest PHC. Three maternal deaths reported this year.',
+        loc: 'Bastar, Chhattisgarh', name: 'Sunita Bai', upvotes: 518, org: 'AIIMS Raipur', progress: 38, cat: 'Healthcare'
+      },
+      {
+        id: 'P-003', icon: '🌾', status: 'Open', sev: 'Medium', title: 'Crop Yield Loss Due to Unknown Pest',
+        desc: 'Onion farms have lost 40% yield this season. Farmers cannot identify the pest. No agricultural officer has visited in 6 months.',
+        loc: 'Nashik, Maharashtra', name: 'Ganesh Patil', upvotes: 211, org: '', progress: 8, cat: 'Agriculture'
+      },
+      {
+        id: 'P-004', icon: '⚡', status: 'Matched', sev: 'High', title: 'School has No Electricity or Internet',
+        desc: 'Government middle school has 240 students but no power connection. Digital India initiatives unreachable. Students study by candlelight.',
+        loc: 'Mewat, Haryana', name: 'Aisha Begum', upvotes: 487, org: 'NIT Kurukshetra', progress: 81, cat: 'Education'
+      },
+      {
+        id: 'P-005', icon: '🌊', status: 'InProgress', statusLabel: 'In Progress', sev: 'High', title: 'Garbage Dumping on River Bank',
+        desc: 'Industrial waste is dumped nightly on the Ganga bank near Assi Ghat. Municipal complaints ignored for 8 months. Strong odour, dead fish reported.',
+        loc: 'Varanasi, Uttar Pradesh', name: 'Priya Singh', upvotes: 623, org: 'BHU', progress: 45, cat: 'Environment'
+      }
+    ];
+
+    function renderProblems(filter) {
+      const list = document.getElementById('problemList');
+      list.innerHTML = '';
+      const filtered = filter === 'All' ? problems : problems.filter(p => p.cat === filter);
+      if (!filtered.length) {
+        list.innerHTML = '<p style="color:#8891a0;padding:30px 0;text-align:center;">No problems in this category yet.</p>';
+        return;
+      }
+      filtered.forEach(p => {
+        const label = p.statusLabel || p.status;
+        const div = document.createElement('div');
+        div.className = 'problem-card';
+        div.innerHTML = `
+      <div class="problem-icon">${p.icon}</div>
+      <div>
+        <div class="problem-meta-top">
+          <span>${p.id}</span>
+          <span class="status-badge status-${p.status}">${label}</span>
+          <span class="severity sev-${p.sev}"><span class="sev-dot"></span>${p.sev}</span>
+        </div>
+        <h3>${p.title}</h3>
+        <p class="desc">${p.desc}</p>
+        <div class="problem-submeta">
+          <span>📍 ${p.loc}</span>
+          <span>👤 ${p.name}</span>
+          <span>⬆ ${p.upvotes} upvotes</span>
+          ${p.org ? `<span>🎓 ${p.org}</span>` : ''}
+        </div>
+        <div class="progress-row"><span>Progress</span><span>${p.progress}%</span></div>
+        <div class="progress-bar"><div style="width:${p.progress}%"></div></div>
+      </div>
+      <div class="chevron">›</div>
+    `;
+        list.appendChild(div);
+      });
+    }
+    renderProblems('All');
+    document.getElementById('filterPills').addEventListener('click', e => {
+      const btn = e.target.closest('.filter-pill');
+      if (!btn) return;
+      document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderProblems(btn.dataset.filter);
+    });
+
+    /* ---------------- Projects ---------------- */
+    const projectDetails = {
+      'P-001': {
+        icon: '💧', title: 'Drinking Water Contamination in Rampur Village', status: 'Matched', progress: 62,
+        desc: 'Groundwater has turned yellow-brown. Children are falling sick. Testing shows high fluoride and arsenic levels beyond safe limits.',
+        university: 'IIT Kanpur – Dept. of Civil Engineering',
+        team: [
+          { i: 'L', name: 'Anjali Sharma', role: 'Lead Researcher', color: '#8b5cf6' },
+          { i: 'F', name: 'Pradeep Yadav', role: 'Field Engineer', color: '#3b82f6' },
+          { i: 'D', name: 'Mita Roy', role: 'Data Analyst', color: '#8b5cf6' }
+        ],
+        enrolled: '5 students enrolled',
+        mentorOrg: 'Tata Chemicals Ltd.',
+        mentors: [
+          { i: 'AS', name: 'Dr. Arvind Sharma', role: 'AI / Water Tech', color: '#fbbf24' },
+          { i: 'MR', name: 'Meenakshi Rao', role: 'Rural Healthcare', color: '#fbbf24' }
+        ],
+        milestones: [
+          { name: 'Problem Verified & Geo-tagged', date: 'Sep 1, 2026', done: true },
+          { name: 'University Team Assigned', date: 'Sep 8, 2026', done: true },
+          { name: 'Field Survey Completed', date: 'Sep 22, 2026', done: true },
+          { name: 'Prototype / Pilot Solution', date: 'Oct 15, 2026', done: false },
+          { name: 'Solution Deployed & Validated', date: 'Nov 30, 2026', done: false }
+        ]
+      },
+      'P-002': {
+        icon: '🏥', title: 'No Primary Health Centre within 30 km', status: 'In Progress', progress: 38,
+        desc: 'Pregnant women must travel 35 km on unpaved roads to reach the nearest PHC. Three maternal deaths reported this year.',
+        university: 'AIIMS Raipur – Dept. of Community Medicine',
+        team: [
+          { i: 'S', name: 'Sunil Verma', role: 'Lead Researcher', color: '#3b82f6' },
+          { i: 'K', name: 'Kavita Nair', role: 'Field Coordinator', color: '#8b5cf6' }
+        ],
+        enrolled: '4 students enrolled',
+        mentorOrg: 'Apollo Hospitals',
+        mentors: [
+          { i: 'RN', name: 'Dr. Rekha Nambiar', role: 'Public Health', color: '#fbbf24' }
+        ],
+        milestones: [
+          { name: 'Problem Verified & Geo-tagged', date: 'Aug 20, 2026', done: true },
+          { name: 'University Team Assigned', date: 'Aug 29, 2026', done: true },
+          { name: 'Field Survey Completed', date: 'Sep 25, 2026', done: false },
+          { name: 'Prototype / Pilot Solution', date: 'Nov 5, 2026', done: false },
+          { name: 'Solution Deployed & Validated', date: 'Dec 20, 2026', done: false }
+        ]
+      },
+      'P-004': {
+        icon: '⚡', title: 'School has No Electricity or Internet', status: 'Matched', progress: 81,
+        desc: 'Government middle school has 240 students but no power connection. Digital India initiatives unreachable. Students study by candlelight.',
+        university: 'NIT Kurukshetra – Dept. of Electrical Engineering',
+        team: [
+          { i: 'V', name: 'Vikram Chauhan', role: 'Lead Researcher', color: '#8b5cf6' },
+          { i: 'N', name: 'Neha Sharma', role: 'Solar Systems', color: '#3b82f6' }
+        ],
+        enrolled: '6 students enrolled',
+        mentorOrg: 'Tata Power Solar',
+        mentors: [
+          { i: 'RK', name: 'Rakesh Khanna', role: 'Renewable Energy', color: '#fbbf24' }
+        ],
+        milestones: [
+          { name: 'Problem Verified & Geo-tagged', date: 'Jul 10, 2026', done: true },
+          { name: 'University Team Assigned', date: 'Jul 18, 2026', done: true },
+          { name: 'Field Survey Completed', date: 'Aug 2, 2026', done: true },
+          { name: 'Prototype / Pilot Solution', date: 'Sep 15, 2026', done: true },
+          { name: 'Solution Deployed & Validated', date: 'Oct 10, 2026', done: false }
+        ]
+      },
+      'P-005': {
+        icon: '🌊', title: 'Garbage Dumping on River Bank', status: 'In Progress', progress: 45,
+        desc: 'Industrial waste is dumped nightly on the Ganga bank near Assi Ghat. Municipal complaints ignored for 8 months. Strong odour, dead fish reported.',
+        university: 'BHU – Dept. of Environmental Science',
+        team: [
+          { i: 'A', name: 'Amit Tiwari', role: 'Lead Researcher', color: '#3b82f6' },
+          { i: 'P', name: 'Pooja Mishra', role: 'Field Engineer', color: '#8b5cf6' }
+        ],
+        enrolled: '5 students enrolled',
+        mentorOrg: 'NTPC Ltd.',
+        mentors: [
+          { i: 'SG', name: 'Suresh Gupta', role: 'Environmental Compliance', color: '#fbbf24' }
+        ],
+        milestones: [
+          { name: 'Problem Verified & Geo-tagged', date: 'Aug 1, 2026', done: true },
+          { name: 'University Team Assigned', date: 'Aug 12, 2026', done: true },
+          { name: 'Field Survey Completed', date: 'Sep 5, 2026', done: false },
+          { name: 'Prototype / Pilot Solution', date: 'Oct 20, 2026', done: false },
+          { name: 'Solution Deployed & Validated', date: 'Dec 1, 2026', done: false }
+        ]
+      }
+    };
+    const projectOrder = ['P-001', 'P-002', 'P-004', 'P-005'];
+
+    function renderProjectSidebar(activeId) {
+      const sb = document.getElementById('projSidebar');
+      sb.innerHTML = '';
+      projectOrder.forEach(id => {
+        const p = projectDetails[id];
+        const div = document.createElement('div');
+        div.className = 'proj-item' + (id === activeId ? ' active' : '');
+        div.dataset.id = id;
+        div.innerHTML = `<span class="emoji">${p.icon}</span><div><div class="p-title">${p.title}</div><div class="p-id">${id}</div></div>`;
+        div.addEventListener('click', () => selectProject(id));
+        sb.appendChild(div);
+      });
+    }
+
+    function renderProjectMain(id) {
+      const p = projectDetails[id];
+      const main = document.getElementById('projMain');
+      const teamRows = p.team.map(m => `
+    <div class="member-row">
+      <div class="avatar" style="background:${m.color}">${m.i}</div>
+      <div><div class="m-name">${m.role} – ${m.name}</div></div>
+    </div>`).join('');
+      const mentorRows = p.mentors.map(m => `
+    <div class="member-row">
+      <div class="avatar" style="background:${m.color};color:#7c5a00;">${m.i}</div>
+      <div><div class="m-name">${m.name}</div><div class="m-role">${m.role}</div></div>
+    </div>`).join('');
+      const milestoneRows = p.milestones.map(m => `
+    <div class="milestone-row ${m.done ? '' : 'is-pending'}">
+      <div class="milestone-left">
+        <div class="m-check ${m.done ? 'done' : 'pending'}">${m.done ? '✓' : ''}</div>
+        <span class="mname">${m.name}</span>
+      </div>
+      <span class="mdate">${m.date}</span>
+    </div>`).join('');
+
+      main.innerHTML = `
+    <div class="proj-hero-card">
+      <div class="proj-hero-top">
+        <div>
+          <div class="badges"><span>${id}</span><span class="status-badge status-${p.status === 'In Progress' ? 'InProgress' : p.status}" style="background:rgba(255,255,255,.12);color:#fff;">${p.status}</span></div>
+          <h2>${p.title}</h2>
+        </div>
+        <div class="emoji-big">${p.icon}</div>
+      </div>
+      <p>${p.desc}</p>
+      <div class="proj-progress-row"><span>Overall Progress</span><span>${p.progress}%</span></div>
+      <div class="proj-progress-bar"><div style="width:${p.progress}%"></div></div>
+    </div>
+    <div class="proj-cards-row">
+      <div class="info-card">
+        <div class="tag">🎓 UNIVERSITY PARTNER</div>
+        <h4>${p.university}</h4>
+        ${teamRows}
+        <div class="enrolled-note">${p.enrolled}</div>
+      </div>
+      <div class="info-card">
+        <div class="tag">📊 INDUSTRY MENTOR</div>
+        <h4>${p.mentorOrg}</h4>
+        ${mentorRows}
+      </div>
+    </div>
+    <div class="milestones">
+      <div class="tag" style="margin-bottom:16px;">🗓 PROJECT MILESTONES</div>
+      ${milestoneRows}
+    </div>
+  `;
+    }
+
+    function selectProject(id) {
+      renderProjectSidebar(id);
+      renderProjectMain(id);
+    }
+    selectProject('P-001');
+
+    /* ---------------- About / Team ---------------- */
+    const team = [
+      { i: 'PS', name: 'Name 1', role: 'Team Lead & UI/UX', color: '#c4b5fd' },
+      { i: 'RG', name: 'Name 2', role: 'AI & Backend', color: '#93c5fd' },
+      { i: 'AV', name: 'Name 3', role: 'Frontend Dev', color: '#f9a8d4' },
+      { i: 'MS', name: 'Name 4', role: 'Database & API', color: '#86efac' },
+      { i: 'SP', name: 'Name 5', role: 'Research & Content', color: '#fdba74' },
+      { i: 'AK', name: 'Name 6', role: 'DevOps & Cloud', color: '#fde047' }
+    ];
+    const teamGrid = document.getElementById('teamGrid');
+    team.forEach(m => {
+      const div = document.createElement('div');
+      div.className = 'team-card';
+      div.innerHTML = `<div class="avatar" style="background:${m.color};color:#3a3a3a;">${m.i}</div><div><div class="t-name">${m.name}</div><div class="t-role">${m.role}</div></div>`;
+      teamGrid.appendChild(div);
+    });
+
+    /* ---------------- Form submit ---------------- */
+    document.getElementById('problemForm').addEventListener('submit', e => {
+      e.preventDefault();
+      document.getElementById('formNote').classList.add('show');
+      e.target.reset();
+      setTimeout(() => document.getElementById('formNote').classList.remove('show'), 6000);
+    });
+  </script>
+</body>
+
+</html>
